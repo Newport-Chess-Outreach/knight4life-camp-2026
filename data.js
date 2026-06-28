@@ -35,7 +35,7 @@ const CAMP = {
     "Snacks (Optional)",
   ],
 
-  refundPolicy: "Full refund up to 7 days before camp start. 50% refund 3–6 days before camp. No refunds less than 2 days before camp has begun, though credit toward a future session is available.",
+  refundPolicy: "Full refund up to 7 days before camp start. 50% refund 2–6 days before camp. No refunds less than 2 days before camp has begun, though credit toward a future session is available.",
 
   faqs: [
     { q: "Does my camper need chess experience?",     a: "No — campers are grouped by experience level on the first morning, and our beginner track assumes no prior knowledge." },
