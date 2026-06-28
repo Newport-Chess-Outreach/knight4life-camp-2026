@@ -32,7 +32,7 @@ const CAMP = {
   materials: [
     "Comfortable clothing",
     "Refillable water bottle",
-    "Lunch (contact us if 'bring your own' for a lower price)"
+    "Snacks (Optional)",
   ],
 
   refundPolicy: "Full refund up to 7 days before camp start. 50% refund 3–6 days before camp. No refunds less than 2 days before camp has begun, though credit toward a future session is available.",
@@ -40,6 +40,8 @@ const CAMP = {
   faqs: [
     { q: "Does my camper need chess experience?",     a: "No — campers are grouped by experience level on the first morning, and our beginner track assumes no prior knowledge." },
     { q: "Is before/after care available?",            a: "Drop-off begins at 9:10 AM. Limited after-care until 4:00 PM is available for an additional fee — note this during registration or contact us directly ASAP." },
-    { q: "What if my camper needs to miss a day?",    a: "Let us know in advance where possible. We're not able to prorate fees for missed days, but campers are welcome to rejoin the following day." }
+    { q: "What if my camper needs to miss a day?",    a: "Let us know in advance where possible. We're not able to prorate fees for missed days, but campers are welcome to rejoin the following day." },
+    { q: "Is lunch included?",    a: "Yes, lunch is included! We provide a variety of dietary options, including vegetarian. If you prefer to bring your own lunch, please contact us to receive a discounted price for the camp." }
+
   ]
 };
