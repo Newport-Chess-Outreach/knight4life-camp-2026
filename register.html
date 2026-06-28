@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register — Knight4Life Summer Camp 2026</title>
+<meta name="description" content="Register your camper for Knight4Life Summer Camp, July 27–31, 2026 at Newport High School, Bellevue, WA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="index.html">
+      <span class="logo-mark" aria-hidden="true">
+        <img src="logo.png" alt="Newport Chess Outreach logo" style="width:100%;height:100%;object-fit:cover;border:0;">
+      </span>
+      Newport Chess Outreach
+    </a>
+    <div class="nav-actions">
+      <a class="btn btn-outline on-light btn-sm" href="index.html">← Camp Details</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </nav>
+  <div class="mobile-menu">
+    <a href="index.html">← Camp Details</a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section">
+    <div class="container" style="max-width:760px;">
+
+      <p class="breadcrumb"><a href="index.html">Knight4Life Summer Camp</a> / Register</p>
+
+      <!-- Event summary bar -->
+      <div style="background:var(--paper-50);border:1px solid var(--line);border-radius:var(--radius-md);padding:1.25rem 1.5rem;margin-bottom:2.5rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:0.75rem;align-items:center;">
+        <div>
+          <p style="font-size:0.78rem;color:var(--ink-400);margin-bottom:0.15rem;">Registering for</p>
+          <h3 class="reg-event-name" style="margin:0;">Knight4Life Summer Camp</h3>
+        </div>
+        <div style="text-align:right;">
+          <p style="font-size:0.78rem;color:var(--ink-400);margin-bottom:0.15rem;">Date</p>
+          <p class="reg-event-date" style="font-weight:600;">July 27–31, 2026</p>
+        </div>
+      </div>
+
+      <div class="wizard">
+        <div class="wizard-progress">
+          <div class="wizard-step"><div class="dot">1</div><div class="label">Guardian</div></div>
+          <div class="wizard-step"><div class="dot">2</div><div class="label">Emergency</div></div>
+          <div class="wizard-step"><div class="dot">3</div><div class="label">Camper</div></div>
+          <div class="wizard-step"><div class="dot">4</div><div class="label">Waivers</div></div>
+          <div class="wizard-step"><div class="dot">5</div><div class="label">Payment</div></div>
+        </div>
+
+        <form id="registration-form" novalidate>
+
+          <!-- Step 1: Parent / Guardian Information -->
+          <div class="wizard-panel">
+            <fieldset>
+              <legend>Parent / Guardian Information</legend>
+              <div class="field-row cols-2">
+                <div class="field"><label for="parentFirstName">First name</label><input type="text" id="parentFirstName" name="parentFirstName" required></div>
+                <div class="field"><label for="parentLastName">Last name</label><input type="text" id="parentLastName" name="parentLastName" required></div>
+              </div>
+              <div class="field-row cols-2">
+                <div class="field"><label for="parentEmail">Email address</label><input type="email" id="parentEmail" name="parentEmail" required></div>
+                <div class="field"><label for="parentPhone">Phone number</label><input type="tel" id="parentPhone" name="parentPhone" required></div>
+              </div>
+              <div class="field"><label for="parentAddress">Street address</label><input type="text" id="parentAddress" name="parentAddress" required></div>
+              <div class="field-row cols-3">
+                <div class="field"><label for="parentCity">City</label><input type="text" id="parentCity" name="parentCity" required></div>
+                <div class="field"><label for="parentState">State</label><input type="text" id="parentState" name="parentState" required></div>
+                <div class="field"><label for="parentZip">ZIP code</label><input type="text" inputmode="numeric" id="parentZip" name="parentZip" required></div>
+              </div>
+            </fieldset>
+            <div class="wizard-actions">
+              <span></span>
+              <button type="button" class="btn btn-primary" data-next>Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Emergency Contact -->
+          <div class="wizard-panel">
+            <fieldset>
+              <legend>Emergency Contact Information</legend>
+              <p class="hint" style="margin-bottom:1.25rem;">Someone we can reach if we can't contact the parent/guardian.</p>
+              <div class="field-row cols-2">
+                <div class="field"><label for="emergencyFirstName">First name</label><input type="text" id="emergencyFirstName" name="emergencyFirstName" required></div>
+                <div class="field"><label for="emergencyLastName">Last name</label><input type="text" id="emergencyLastName" name="emergencyLastName" required></div>
+              </div>
+              <div class="field"><label for="emergencyPhone">Phone number</label><input type="tel" id="emergencyPhone" name="emergencyPhone" required></div>
+            </fieldset>
+            <div class="wizard-actions">
+              <button type="button" class="btn btn-outline on-light" data-prev>Back</button>
+              <button type="button" class="btn btn-primary" data-next>Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Camper Information -->
+          <div class="wizard-panel">
+            <fieldset>
+              <legend>Camper Information</legend>
+              <div class="field-row cols-2">
+                <div class="field"><label for="participantFirstName">First name</label><input type="text" id="participantFirstName" name="participantFirstName" required></div>
+                <div class="field"><label for="participantLastName">Last name</label><input type="text" id="participantLastName" name="participantLastName" required></div>
+              </div>
+              <div class="field-row cols-2">
+                <div class="field"><label for="gradeLevel">Grade level</label><input type="text" id="gradeLevel" name="gradeLevel" placeholder="e.g. 4th grade" required></div>
+                <div class="field"><label for="school">School</label><input type="text" id="school" name="school" required></div>
+              </div>
+              <div class="field">
+                <label for="experienceLevel">Chess experience level</label>
+                <select id="experienceLevel" name="experienceLevel" required>
+                  <option value="" disabled selected>Select experience level</option>
+                  <option value="Beginner">Beginner</option>
+                  <option value="Intermediate">Intermediate</option>
+                  <option value="Advanced">Advanced</option>
+                </select>
+              </div>
+              <div class="field-row cols-2">
+                <div class="field"><label for="nwChessRating">Northwest Chess (NWSRS) rating <span style="font-weight:400;color:var(--ink-400);">(optional)</span></label><input type="number" id="nwChessRating" name="nwChessRating" min="0" max="3500" inputmode="numeric" placeholder="e.g. 1200"></div>
+                <div class="field"><label for="uscfRating">USCF rating <span style="font-weight:400;color:var(--ink-400);">(optional)</span></label><input type="number" id="uscfRating" name="uscfRating" min="0" max="3500" inputmode="numeric" placeholder="e.g. 1050"></div>
+              </div>
+              <div class="field"><label for="medicalConditions">Medical conditions <span style="font-weight:400;color:var(--ink-400);">(optional)</span></label><textarea id="medicalConditions" name="medicalConditions"></textarea></div>
+              <div class="field"><label for="allergies">Allergies <span style="font-weight:400;color:var(--ink-400);">(optional)</span></label><textarea id="allergies" name="allergies"></textarea></div>
+              <div class="field"><label for="accommodations">Special accommodations <span style="font-weight:400;color:var(--ink-400);">(optional)</span></label><textarea id="accommodations" name="accommodations"></textarea></div>
+            </fieldset>
+            <div class="wizard-actions">
+              <button type="button" class="btn btn-outline on-light" data-prev>Back</button>
+              <button type="button" class="btn btn-primary" data-next>Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Waivers & Permissions -->
+          <div class="wizard-panel">
+            <fieldset>
+              <legend>Waivers &amp; Permissions</legend>
+              <p class="hint" style="margin-bottom:1.25rem;">Please download and review each document, then check the box to confirm your agreement before continuing.</p>
+              <div class="checkbox-field">
+                <input type="checkbox" id="waiverLiability" name="waiverLiability" required>
+                <label for="waiverLiability">I have read and agree to the <a href="data:application/vnd.openxmlformats-officedocument.wordprocessingml.document;base64,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" download="Liability_Waiver_Newport_Chess_Outreach.docx" rel="noopener">Liability Waiver</a>.</label>
+              </div>
+              <div class="checkbox-field">
+                <input type="checkbox" id="waiverPhoto" name="waiverPhoto" required>
+                <label for="waiverPhoto">I agree to the <strong>Photo / Media Release</strong>, allowing Newport Chess Outreach to use event photos for promotional purposes.</label>
+              </div>
+              <div class="checkbox-field">
+                <input type="checkbox" id="waiverMedical" name="waiverMedical" required>
+                <label for="waiverMedical">I authorize Newport Chess Outreach staff to seek <strong>emergency medical care</strong> on my child's behalf if I cannot be reached.</label>
+              </div>
+              <div class="checkbox-field">
+                <input type="checkbox" id="waiverTerms" name="waiverTerms" required>
+                <label for="waiverTerms">I have read and agree to the <strong>Terms and Conditions</strong>, including the refund policy for this event.</label>
+              </div>
+            </fieldset>
+            <div class="wizard-actions">
+              <button type="button" class="btn btn-outline on-light" data-prev>Back</button>
+              <button type="button" class="btn btn-primary" data-next>Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 5: Billing & Payment -->
+          <div class="wizard-panel">
+            <fieldset>
+              <legend>Billing &amp; Payment</legend>
+              <table class="summary-table">
+                <tr><td>Registration fee</td><td class="reg-event-cost">—</td></tr>
+                <tr class="total"><td>Total due</td><td class="reg-event-cost">—</td></tr>
+              </table>
+              <div class="config-note">
+                You'll be redirected to <strong>Stripe's</strong> secure checkout to pay by card. Your registration is saved as soon as you click below — payment confirms it.
+              </div>
+              <p id="registration-error" hidden style="color:var(--red-700);font-weight:600;margin-top:1rem;"></p>
+            </fieldset>
+            <div class="wizard-actions">
+              <button type="button" class="btn btn-outline on-light" data-prev>Back</button>
+              <button type="submit" class="btn btn-gold">Continue to Payment</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Newport Chess Outreach. All rights reserved.</span>
+      <span>Questions? <a href="mailto:newportchessoutreach@outlook.com" style="color:var(--gold-300);">newportchessoutreach@outlook.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
