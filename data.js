@@ -13,13 +13,13 @@ const CAMP = {
   date: "July 27–31, 2026",
   time: "9:30 AM – 2:30 PM",
   location: "Newport High School, Bellevue, WA",
-  ageRange: "Grades 3–8 (exceptions can be made)",
+  ageRange: "Grades 2–8 (exceptions can be made)",
   cost: "$299",
   costCents: 29900,
   short: "A full week of instruction, puzzles, and friendly tournament play for beginner through advanced players.",
 
-  description: "Knight4Life Summer Camp — Where Every Move Matters. Five days. All skill levels. One unforgettable week. Knight4Life Summer Camp is a student-led chess program where beginners and experienced players alike learn, compete, and grow together. Hosted alongside with Wise Camps, campers benefit from a structured, well-supervised environment with experienced staff supporting safety and daily operations throughout the week. Each day follows a thoughtfully designed curriculum—from tactical puzzles and team challenges to a Swiss-format tournament on Thursday and a Grand Finale celebration on Friday. Campers are grouped by skill level from day one, ensuring every child receives age-appropriate instruction, meaningful challenges, and personalized support. From a workshop with our guest titled player to mentorship from volunteers on state-placing high school teams, campers build confidence, critical thinking, and sportsmanship both on and off the board. Beyond chess, campers earn team points, solve daily puzzles, form new friendships, and leave with personalized achievement certificates and camp swag. It's educational, engaging, and a whole lot of fun. Whether your child is just learning the game or has been playing for years, there's a place for them here. Spots are limited—register today.",
-
+  description: "Five days. All skill levels. One unforgettable week. Knight4Life Summer Camp is a student-led chess fundraising program under Newport Chess Outreach. Beginners and experienced players alike learn, compete, and grow together. Hosted alongside Wise Camps, campers are placed in a structured, well-supervised environment with experienced staff, ensuring complete safety and smooth daily operations throughout the week. Each day follows a thoughtfully designed curriculum. For instance, focused workshops, tactical puzzles, team challenges, Swiss-format tournaments, and a Grand Finale celebration on Friday. To ensure every child can receive skill-appropriate instruction, meaningful challenges, and personalized support, campers are grouped by skill level from day one. From a workshop with our guest titled player to mentorship from professional coaches and volunteers on state-placing high school teams, campers improve their game, use critical thinking, and develop sportsmanship both on and off the board. Beyond chess, campers earn team points, solve daily puzzles, form new friendships, and everyone leaves with a personalized achievement certificate. The Knight4Life Summer Camp is educational, engaging, for a good cause, and a whole lot of fun. Whether your child is just learning the game or has been playing it for years, there's a place for them here. All proceeds are used for future community events, educational opportunities, and donations. Spots are limited—register today.",
+  
   schedule: [
     { time: "9:30 – 9:45 AM",  activity: "Arrival & morning puzzle" },
     { time: "9:45 – 10:30 AM", activity: "Lessons and Workshops" },
