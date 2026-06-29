@@ -1,12 +1,13 @@
 # Setup Guide — Knight4Life Summer Camp Registration Site
 
-This guide walks through everything needed to make registrations and payments fully functional. Budget about 45–60 minutes the first time through. Parts 1–5 must be done in order.
+This guide walks through everything needed to make registrations fully functional. Budget about 20–30 minutes the first time through. Parts 1–4 must be done in order.
 
 **What you're setting up:**
 - **GitHub** — stores your site files so Netlify can deploy them
-- **Netlify** — hosts the site and runs the payment functions
-- **Stripe** — handles all card payments for camp registrations
+- **Netlify** — hosts the site and runs the registration functions
 - **Google Sheets** — saves every registration as a spreadsheet row
+
+> **Payment note:** Camp fees are collected manually via Zelle after registration. Registrants see Zelle instructions on the success page. No payment processor integration is required.
 
 ---
 
@@ -57,30 +58,14 @@ Go to **Site configuration → Environment variables** and add:
 
 | Key | Value |
 |---|---|
-| `STRIPE_SECRET_KEY` | your Stripe secret key (from Part 3) |
-| `SHEETS_WEB_APP_URL` | your Google Apps Script URL (from Part 4) |
-| `STRIPE_WEBHOOK_SECRET` | your Stripe webhook signing secret (from Part 5) |
+| `SHEETS_WEB_APP_URL` | your Google Apps Script URL (from Part 3) |
 | `SITE_URL` | your Netlify URL, e.g. `https://charming-panda-123.netlify.app` |
 
 After adding all values, trigger a fresh deploy: **Deploys → Trigger deploy → Deploy site**.
 
 ---
 
-## Part 3 — Stripe (payments)
-
-**1. Create a Stripe account**
-Go to [stripe.com](https://stripe.com) and sign up. Stay in **Test mode** while setting up.
-
-**2. Copy your secret key**
-Go to **Developers → API keys**. Copy the **Secret key** (starts with `sk_test_...`).
-
-Paste this into `STRIPE_SECRET_KEY` in Netlify.
-
-> Never paste this key into any HTML, JS, or CSS file — only into Netlify's environment variables.
-
----
-
-## Part 4 — Google Sheets (storing registrations)
+## Part 3 — Google Sheets (storing registrations)
 
 Every registration is saved as a row in a Google Sheet you control. The "Registrations" tab is created automatically on the first submission.
 
@@ -109,52 +94,36 @@ Paste this URL into `SHEETS_WEB_APP_URL` in Netlify.
 
 ---
 
-## Part 5 — Stripe Webhook (confirming payments in your Sheet)
+## Part 4 — Test before going public
 
-Without a webhook, Stripe won't update your Google Sheet if a parent closes their browser tab right after paying. The webhook fixes this by having Stripe notify your site directly when payment is confirmed.
-
-**Your site must be live on Netlify before doing this step.**
-
-1. In Stripe, go to **Developers → Webhooks → Add endpoint**
-2. Endpoint URL: `https://YOUR-NETLIFY-SITE/.netlify/functions/stripe-webhook`
-3. Select event: **checkout.session.completed**
-4. Click **Add endpoint**
-5. Click **Reveal** under "Signing secret" and copy the value (starts with `whsec_...`)
-
-Paste this into `STRIPE_WEBHOOK_SECRET` in Netlify, then trigger a fresh deploy.
-
----
-
-## Part 6 — Test before going public
-
-With Stripe in Test mode, run through the full flow on your live Netlify URL:
+Run through the full flow on your live Netlify URL:
 
 1. Go to the camp detail page and click **Register Now**
 2. Fill out all five steps of the form
-3. On the Stripe checkout page, use test card **4242 4242 4242 4242**, any future expiry (e.g. 12/30), any 3-digit CVC, any ZIP
-4. Confirm: you land on the success page, and a row appears in the **Registrations** tab of your Google Sheet with Payment Status = **Paid**
+3. Click **Submit Registration** — you should land on the success page with Zelle payment instructions
+4. Confirm a row appears in the **Registrations** tab of your Google Sheet with Payment Status = **Pending Zelle**
 
 ---
 
-## Part 7 — Go live
+## Part 5 — Collecting Zelle payments
 
-Once everything tests cleanly:
+After a family submits the registration form, they see your Zelle QR code and phone number on the success page. To activate this:
 
-1. In Stripe, switch to **Live mode** (toggle top-right)
-2. Go to **Developers → API keys** and copy the live Secret key (starts with `sk_live_...`)
-3. Update `STRIPE_SECRET_KEY` in Netlify with the live key
-4. Repeat Part 5 to create a **new webhook in live mode** — test and live webhooks are separate
-5. Update `SITE_URL` in Netlify to your final domain if you've connected a custom one
-6. Trigger a fresh deploy
-7. Do one real small test (or a free registration if you have one) to confirm everything works end-to-end
+1. Open `register-success.html` in a text editor
+2. Replace `(PHONE NUMBER HERE)` with your actual Zelle phone number (e.g. `(425) 598-4787`)
+3. Replace the QR code placeholder div with an `<img>` tag pointing to your Zelle QR code image (upload the image to your project folder first):
+   ```html
+   <img src="zelle-qr.png" alt="Zelle QR Code" style="width:320px;height:320px;object-fit:contain;">
+   ```
+4. Commit and push to GitHub — Netlify redeploys automatically
+
+When you receive a Zelle payment, open the Google Sheet and manually update the **paymentStatus** column for that row from `Pending Zelle` to `Paid`.
 
 ---
 
 ## Notes
 
-**Confirmation emails:** Stripe automatically sends a payment receipt if receipt emails are enabled in your Stripe account — go to **Settings → Customer emails** to turn this on.
-
-**Refunds:** Handled directly in the Stripe Dashboard under **Payments**.
+**Refunds:** Process directly through your bank's Zelle interface.
 
 **Editing a submitted registration:** Open the Google Sheet and edit the row directly.
 

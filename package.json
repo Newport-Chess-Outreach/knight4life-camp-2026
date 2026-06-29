@@ -2,8 +2,6 @@
   "name": "knight4life-summer-camp-2026",
   "version": "1.0.0",
   "private": true,
-  "description": "Knight4Life Summer Camp registration site — Stripe payments via Netlify Functions, registrations stored in Google Sheets.",
-  "dependencies": {
-    "stripe": "^16.0.0"
-  }
+  "description": "Knight4Life Summer Camp registration site — Zelle payments, registrations stored in Google Sheets.",
+  "dependencies": {}
 }

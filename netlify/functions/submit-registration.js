@@ -3,16 +3,14 @@
 // Called by register.html when a family completes the 5-step form.
 //
 // 1. Saves the full registration to your Google Sheet with status "Pending"
-// 2. Creates a Stripe Checkout Session for the camp fee and returns the URL
-// 3. (Free events would skip Stripe, but this camp always has a cost)
+// 2. Returns a redirect URL to the success page
+//
+// Payment is now handled manually via Zelle — no Stripe integration.
 //
 // Required environment variables (Netlify → Site settings → Environment variables):
-//   STRIPE_SECRET_KEY    Stripe Dashboard → Developers → API keys
 //   SHEETS_WEB_APP_URL   The Google Apps Script Web App URL (see SETUP.md)
 //   SITE_URL             e.g. https://www.yoursite.netlify.app
 // ----------------------------------------------------------------------------
-
-const Stripe = require("stripe");
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
@@ -38,7 +36,7 @@ exports.handler = async (event) => {
     "REG-" + Date.now() + "-" + Math.random().toString(36).slice(2, 8).toUpperCase();
   const siteUrl = process.env.SITE_URL || `https://${event.headers.host}`;
 
-  // ---- 1) Save to Google Sheets as Pending ----------------------------
+  // ---- Save to Google Sheets -------------------------------------------
   if (!process.env.SHEETS_WEB_APP_URL) {
     return {
       statusCode: 500,
@@ -53,7 +51,7 @@ exports.handler = async (event) => {
         action: "newRegistration",
         registrationId,
         amountCents,
-        paymentStatus: amountCents > 0 ? "Pending" : "N/A (free event)",
+        paymentStatus: "Pending Zelle",
         ...data
       })
     });
@@ -64,46 +62,11 @@ exports.handler = async (event) => {
     };
   }
 
-  // ---- 2) Free event — done, no payment needed ------------------------
-  if (amountCents <= 0) {
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-        url: `${siteUrl}/register-success.html?registrationId=${registrationId}&free=true`
-      })
-    };
-  }
-
-  // ---- 3) Paid event — create a Stripe Checkout Session ---------------
-  if (!process.env.STRIPE_SECRET_KEY) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: "Server is not configured (missing STRIPE_SECRET_KEY)." })
-    };
-  }
-  try {
-    const stripe  = Stripe(process.env.STRIPE_SECRET_KEY);
-    const session = await stripe.checkout.sessions.create({
-      mode:                 "payment",
-      payment_method_types: ["card"],
-      customer_email:       data.parentEmail,
-      line_items: [
-        {
-          price_data: {
-            currency:     "usd",
-            product_data: { name: `${data.eventTitle} — Registration` },
-            unit_amount:  amountCents
-          },
-          quantity: 1
-        }
-      ],
-      metadata:    { registrationId, eventSlug: data.eventSlug },
-      success_url: `${siteUrl}/register-success.html?registrationId=${registrationId}&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url:  `${siteUrl}/register.html?canceled=true`
-    });
-
-    return { statusCode: 200, body: JSON.stringify({ url: session.url }) };
-  } catch (err) {
-    return { statusCode: 500, body: JSON.stringify({ error: "Stripe error: " + err.message }) };
-  }
+  // ---- Redirect to success page -----------------------------------------
+  return {
+    statusCode: 200,
+    body: JSON.stringify({
+      url: `${siteUrl}/register-success.html?registrationId=${registrationId}`
+    })
+  };
 };

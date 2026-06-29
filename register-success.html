@@ -3,11 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Registration Confirmed — Knight4Life Summer Camp 2026</title>
+<title>Registration Received — Knight4Life Summer Camp 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  .zelle-card {
+    background: var(--paper-50);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 560px;
+    text-align: center;
+  }
+  .zelle-qr-placeholder {
+    width: 320px;
+    height: 320px;
+    max-width: 100%;
+    margin: 1.25rem auto;
+    border: 2px dashed var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--paper-0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--ink-400);
+    font-size: 0.9rem;
+  }
+  .zelle-qr-placeholder svg {
+    opacity: 0.35;
+  }
+  .zelle-phone {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--red-700);
+    margin: 0.5rem 0 0;
+    letter-spacing: 0.02em;
+  }
+  .zelle-memo-box {
+    background: #fefce8;
+    border: 1.5px solid #fde047;
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.25rem;
+    margin: 1.5rem auto 0;
+    max-width: 560px;
+    text-align: left;
+    font-size: 0.92rem;
+    color: var(--ink-600);
+    line-height: 1.55;
+  }
+  .zelle-memo-box strong {
+    color: var(--ink-900, #111);
+  }
+  .zelle-confirm-note {
+    max-width: 560px;
+    margin: 1.25rem auto 0;
+    font-size: 0.88rem;
+    color: var(--ink-400);
+    line-height: 1.6;
+  }
+  .zelle-confirm-note a {
+    color: var(--red-700);
+    font-weight: 500;
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -25,16 +89,76 @@
 
 <main id="main">
   <section class="section">
-    <div class="container" style="max-width:600px;text-align:center;">
+    <div class="container" style="max-width:640px;text-align:center;">
+
+      <!-- Confirmation icon -->
       <div style="width:64px;height:64px;border-radius:50%;background:var(--gold-100);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;">
         <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="var(--red-700)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
       </div>
-      <h1>You're registered!</h1>
-      <p class="lede" style="margin:0 auto;" id="success-message">
-        Thanks — your registration for Knight4Life Summer Camp is confirmed. A payment receipt is on its way from Stripe, and our team has received your registration. We'll be in touch with anything you need to know before July 27.
+
+      <h1>Registration Received!</h1>
+
+      <p class="lede" style="margin:0.75rem auto 0;">
+        Thank you! Your registration for <strong>Knight4Life Summer Camp</strong> has been successfully received and saved.
       </p>
-      <p style="font-size:0.85rem;color:var(--ink-400);margin-top:1.5rem;">Confirmation reference: <span id="reg-id" style="font-family:var(--font-mono);">—</span></p>
+
+      <p style="font-size:0.85rem;color:var(--ink-400);margin-top:1rem;">
+        Confirmation reference: <span id="reg-id" style="font-family:var(--font-mono);">—</span>
+      </p>
+
+      <!-- Spot-not-confirmed notice -->
+      <div style="background:var(--paper-50);border:1px solid var(--line);border-radius:var(--radius-sm);padding:1rem 1.25rem;margin:1.75rem auto 0;max-width:540px;">
+        <p style="margin:0;font-size:0.95rem;font-weight:600;color:var(--ink-800);">
+          ⚠️ Your spot is <em>not confirmed</em> until payment has been received via Zelle.
+        </p>
+        <p style="margin:0.5rem 0 0;font-size:0.88rem;color:var(--ink-600);">
+          Please send your payment using one of the methods below.
+        </p>
+      </div>
+
+      <!-- Zelle QR code area -->
+      <div class="zelle-card">
+        <h2 style="margin:0 0 0.25rem;font-size:1.25rem;">Pay via Zelle</h2>
+        <p style="color:var(--ink-600);font-size:0.9rem;margin:0;">Scan the QR code or use the phone number below.</p>
+
+        <!-- QR Code placeholder — replace the contents of this div with your actual <img> tag -->
+        <div class="zelle-qr-placeholder" aria-label="Zelle QR Code placeholder">
+          <svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="4" y="4" width="24" height="24" rx="2"/>
+            <rect x="10" y="10" width="12" height="12" rx="1"/>
+            <rect x="36" y="4" width="24" height="24" rx="2"/>
+            <rect x="42" y="10" width="12" height="12" rx="1"/>
+            <rect x="4" y="36" width="24" height="24" rx="2"/>
+            <rect x="10" y="42" width="12" height="12" rx="1"/>
+            <rect x="36" y="36" width="7" height="7" rx="1"/>
+            <rect x="51" y="36" width="9" height="7" rx="1"/>
+            <rect x="36" y="51" width="24" height="9" rx="1"/>
+          </svg>
+          <span><img src="zelle.jpg"></span>
+        </div>
+
+        <p style="margin:0;font-size:0.85rem;color:var(--ink-400);">Or pay via zelle using this phone number:</p>
+        <!-- ↓ Replace (PHONE NUMBER HERE) with the actual Zelle phone number -->
+        <p class="zelle-phone">425-598-4787</p>
+      </div>
+
+      <!-- Memo instructions -->
+      <div class="zelle-memo-box">
+        <strong>📝 Important — Memo / Note field:</strong><br>
+        When sending your Zelle payment, please include the <strong>participant's full name</strong> and <strong>"Chess Camp 2026"</strong> in the Memo or Note section before sending. This helps us match your payment to your registration quickly.
+        <br><br>
+        <em>Example memo: "Jane Smith – Chess Camp 2026"</em>
+      </div>
+
+      <!-- Confirmation message -->
+      <p class="zelle-confirm-note">
+        Once we receive your Zelle payment, your registration will be fully confirmed. If we have any questions, we will contact you using the information provided on your registration form.<br><br>
+        Questions or concerns? Email us at
+        <a href="mailto:newportchessoutreach@gmail.com">newportchessoutreach@gmail.com</a>.
+      </p>
+
       <a class="btn btn-primary" href="index.html" style="margin-top:2rem;">Back to Camp Details</a>
+
     </div>
   </section>
 </main>
