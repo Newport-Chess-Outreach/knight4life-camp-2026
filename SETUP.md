@@ -121,6 +121,124 @@ When you receive a Zelle payment, open the Google Sheet and manually update the 
 
 ---
 
+## Part 6 — Connect your existing domain (optional)
+
+Do this after Part 4 (testing) passes cleanly. Your domain's DNS is managed in **Cloudflare**, so all the steps below use the Cloudflare dashboard.
+
+> If someone else owns the domain and added you as a member, you'll need the **DNS** permission role or higher to complete Step 3 yourself. Otherwise, send them the table of values in Step 3 and they can add the records in about 5 minutes.
+
+### Step 1 — Tell Netlify about your domain
+
+1. In Netlify, open your site and go to **Site configuration → Domain management**
+2. Click **Add a domain**
+3. Type your full domain name (e.g. `yoursite.org`) and click **Verify** → **Add domain**
+4. Netlify will show you a screen with DNS instructions — **leave this tab open**, you'll need it in the next step
+
+### Step 2 — Decide what you're pointing (root vs. subdomain)
+
+**Option A — Root domain** (`yoursite.org` with no prefix)
+This makes your camp site the main site at your domain.
+
+**Option B — Subdomain** (`camp.yoursite.org`)
+This leaves your main domain untouched and puts the camp site at a prefix. This is the safer option if anything else is already hosted at your `.org` domain.
+
+---
+
+### Step 3 — Add DNS records in Cloudflare
+
+1. Log in to [dash.cloudflare.com](https://dash.cloudflare.com)
+2. Select your domain from the account list
+3. In the left sidebar, click **DNS → Records**
+4. Click **Add record**
+
+**If you chose Option A (root domain — `yoursite.org`):**
+
+Add a record of type **A**:
+
+| Field | Value |
+|---|---|
+| Type | `A` |
+| Name | `@` (means the root domain) |
+| IPv4 address | `75.2.60.5` |
+| Proxy status | **DNS only** (click the orange cloud icon so it turns grey) |
+| TTL | Auto |
+
+> `75.2.60.5` is Netlify's load balancer IP. Netlify also shows this value in their Domain management panel — use whatever IP they display there in case it has changed.
+
+Click **Save**, then click **Add record** again for the `www` version:
+
+| Field | Value |
+|---|---|
+| Type | `CNAME` |
+| Name | `www` |
+| Target | your Netlify URL, e.g. `charming-panda-123.netlify.app` |
+| Proxy status | **DNS only** (grey cloud) |
+| TTL | Auto |
+
+**If you chose Option B (subdomain — e.g. `camp.yoursite.org`):**
+
+Add a single **CNAME** record:
+
+| Field | Value |
+|---|---|
+| Type | `CNAME` |
+| Name | `camp` (just the prefix, not the full domain) |
+| Target | your Netlify URL, e.g. `charming-panda-123.netlify.app` |
+| Proxy status | **DNS only** (grey cloud) |
+| TTL | Auto |
+
+> **The single most important Cloudflare-specific step:** for every record above, the **Proxy status** must be set to **DNS only** (grey cloud icon), not **Proxied** (orange cloud icon). Cloudflare's orange-cloud proxy and Netlify's own SSL/CDN can't both sit in front of the same record — leaving it proxied is the most common reason a Netlify custom domain fails to provision SSL. Click the cloud icon next to the record to toggle it.
+
+---
+
+### Step 4 — Wait for DNS to propagate
+
+DNS changes are not instant. Cloudflare is generally one of the faster DNS providers, so propagation is typically **5–30 minutes**, occasionally up to a few hours. You can check progress at [dnschecker.org](https://dnschecker.org) — type your domain and look for your new record showing up across locations.
+
+---
+
+### Step 5 — HTTPS / SSL (automatic)
+
+Once Netlify detects that DNS is pointing correctly, it automatically provisions a free SSL certificate via Let's Encrypt. You'll see the status change from "Awaiting DNS" to **"Netlify DNS verified"** and then **"Certificate provisioned"** in the Domain management panel. This usually happens within a few minutes of DNS propagating — assuming the Proxy status was set to **DNS only** in Step 3.
+
+You don't need to do anything — just wait and refresh the panel.
+
+---
+
+### Step 6 — Update SITE_URL in Netlify
+
+Once your custom domain is live, update the `SITE_URL` environment variable so that success-page redirects use your real domain:
+
+1. Go to **Site configuration → Environment variables**
+2. Edit `SITE_URL` and change it to your custom domain, e.g. `https://yoursite.org`
+3. Trigger a fresh deploy: **Deploys → Trigger deploy → Deploy site**
+
+---
+
+### Troubleshooting
+
+**"Certificate provisioning" is stuck:** This is almost always the Proxy status. Go back to Cloudflare → DNS → Records and confirm the cloud icon next to each record pointing to Netlify is **grey** (DNS only), not orange (Proxied).
+
+**The site loads but shows a security warning:** SSL hasn't provisioned yet. Wait 10–15 more minutes and try again — and double-check the proxy toggle as above.
+
+**Nothing loads at all:** Double-check the record values in Cloudflare. A common mistake is typing the full domain in the **Name** field (e.g. `camp.yoursite.org` instead of just `camp`).
+
+**Email stopped working after I changed DNS:** If you changed nameservers or edited MX records, double-check those weren't affected. For the A and CNAME records added above, email (MX records) should be untouched.
+
+**I don't have permission to edit DNS:** If you were added to the Cloudflare account as a member without the DNS role, ask the domain owner to add the records from Step 3, or to grant you the DNS edit permission.
+
+### Removing the domain later
+
+If you ever want to move this domain to a different site:
+
+1. In Netlify: **Site configuration → Domain management**, click the **⋯** next to the domain, select **Remove domain**
+2. In Cloudflare: delete the A and CNAME records you added above (DNS → Records)
+3. Add new DNS records pointing at wherever the domain is going next
+
+DNS will take the same 10–60 minutes (or less, on Cloudflare) to propagate the change.
+
+---
+
 ## Notes
 
 **Refunds:** Process directly through your bank's Zelle interface.
