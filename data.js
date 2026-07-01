@@ -14,8 +14,10 @@ const CAMP = {
   time: "9:30 AM – 2:30 PM",
   location: "Newport High School, Bellevue, WA",
   ageRange: "Grades 2–8 (exceptions can be made)",
-  cost: "$299",
-  costCents: 29900,
+  cost: "<s>$299</s> $269 ($10.76/hr) ",
+  costRegister: "<s>$299</s> $269",
+
+  costCents: 26900,
   short: "A full week of instruction, puzzles, and friendly tournament play for beginner through advanced players.",
 
   description: "Five days. All skill levels. One unforgettable week! Knight4Life Summer Camp is a student-led chess fundraising program under Newport Chess Outreach. Beginners and experienced players alike learn, compete, and grow together. Hosted alongside Wise Camps, campers are placed in a structured, well-supervised environment with experienced staff, ensuring complete safety throughout the week. To ensure every child can receive skill-appropriate instruction, meaningful challenges, and personalized support, campers are grouped by skill level from day one. From a workshop with our guest titled player to mentorship from volunteers on state-placing high school teams, campers improve their game, use critical thinking, and develop sportsmanship both on and off the board. The Knight4Life Summer Camp is educational, engaging, for a good cause, and a whole lot of fun! All proceeds are used for future community events, educational opportunities, and donations. Spots are limited—register today.",

@@ -96,7 +96,7 @@ function renderEventDetail() {
   if (ageEl) ageEl.innerHTML = `${ICONS.tag} ${CAMP.ageRange}`;
 
   const costEl = document.getElementById("ed-cost");
-  if (costEl) costEl.textContent = CAMP.cost;
+  if (costEl) costEl.innerHTML = CAMP.cost;
 
   const schedEl = document.getElementById("ed-schedule");
   if (schedEl) {
@@ -133,7 +133,7 @@ function initWizard() {
   // Populate event summary bar from CAMP data
   if (typeof CAMP !== "undefined") {
     document.querySelectorAll(".reg-event-name").forEach(el => el.textContent = CAMP.title);
-    document.querySelectorAll(".reg-event-cost").forEach(el => el.textContent = CAMP.cost);
+    document.querySelectorAll(".reg-event-cost").forEach(el => el.innerHTML = CAMP.costRegister);
     document.querySelectorAll(".reg-event-date").forEach(el => el.textContent = CAMP.date);
   }
 
