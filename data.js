@@ -1,49 +1,24 @@
 /* ============================================================
-   KNIGHT4LIFE SUMMER CAMP — CONTENT DATA
-   ------------------------------------------------------------
-   All editable camp content lives here. To update details,
-   edit this file with any text editor and follow the existing
-   patterns. The CAMP constant is consumed by every page.
+   NEWPORT CHESS OUTREACH — ABOUT PAGE CONTENT
+   Edit the board members and organizational values below.
+   The three Home Impact values are edited in index.html.
    ============================================================ */
 
-const CAMP = {
-  slug: "summer-chess-camp-2026",
-  title: "Knight4Life Summer Camp",
-  category: "Camps",
-  date: "July 27–31, 2026",
-  time: "9:30 AM – 2:30 PM",
-  location: "Newport High School, Bellevue, WA",
-  ageRange: "Grades 2–8 (exceptions can be made)",
-  cost: "<s>$299</s> $269 ($10.76/hr) ",
-  costRegister: "<s>$299</s> $269",
-
-  costCents: 26900,
-  short: "A full week of instruction, puzzles, and friendly tournament play for beginner through advanced players.",
-
-  description: "Five days. All skill levels. One unforgettable week! Knight4Life Summer Camp is a student-led chess fundraising program under Newport Chess Outreach. Beginners and experienced players alike learn, compete, and grow together. Hosted alongside Wise Camps, campers are placed in a structured, well-supervised environment with experienced staff, ensuring complete safety throughout the week. To ensure every child can receive skill-appropriate instruction, meaningful challenges, and personalized support, campers are grouped by skill level from day one. From a workshop with our guest titled player to mentorship from volunteers on state-placing high school teams, campers improve their game, use critical thinking, and develop sportsmanship both on and off the board. The Knight4Life Summer Camp is educational, engaging, for a good cause, and a whole lot of fun! All proceeds are used for future community events, educational opportunities, and donations. Spots are limited—register today.",
-  
-  schedule: [
-    { time: "9:30 – 9:45 AM",  activity: "Arrival & morning puzzle" },
-    { time: "9:45 – 10:30 AM", activity: "Lessons and Workshops" },
-    { time: "10:30 – 11:45 AM", activity: "Puzzles and Challenges" },
-    { time: "11:45 – 12:45 PM", activity: "Lunch + Choose Your Own Adventure" },
-    { time: "12:45 – 2:15 PM", activity: "Lessons, Workshops, and Games" },
-    { time: "2:15 – 2:45 PM",  activity: "Debrief, Wrap-up, and Pick-up" }
+const SITE_DATA = {
+  /* Board of directors */
+  board: [
+    { name: "Daniel Zhang", role: "President", bio: "Daniel founded Newport Chess Outreach in 2026 inspired by his lifelong passion for chess and community services" },
+    // Vice President: replace the placeholder name and bio below.
+    { name: "Danny Kang", role: "Vice President", bio: "Danny has played for Newport High School's competitive team for 4 years and is excited to support youth chess programs through direct instruction and initiatives." }
   ],
 
-  materials: [
-    "Comfortable clothing",
-    "Refillable water bottle",
-    "Snacks (Optional)",
-  ],
-
-  refundPolicy: "Full refund up to 7 days before camp start. 50% refund 2–6 days before camp. No refunds less than 2 days before camp has begun, though credit toward a future session is available.",
-
-  faqs: [
-    { q: "Does my camper need chess experience?",     a: "No — campers are grouped by experience level on the first morning, and our beginner track assumes no prior knowledge." },
-    { q: "Is before/after care available?",            a: "Drop-off begins at 9:10 AM. Limited after-care until 5:00 PM is available for an additional fee — register at http://www.wisecamps.com/wise-extended-care-for-chess-camp" },
-    { q: "What if my camper needs to miss a day?",    a: "Let us know in advance to work something out (e.g. partial refunds or future session credit). We're not able to prorate fees for missed days without notice, but campers are welcome to rejoin the following day." },
-    { q: "Is lunch included?",    a: "Yes, lunch is included! We provide a variety of dietary options, including vegetarian. If you prefer to bring your own lunch, please contact us to receive a discounted price for the camp." }
-
+  /* Organizational values */
+  values: [
+    { title: "Education", text: "We teach chess as a tool for sharper thinking, not just competition — every lesson builds transferable skills." },
+    { title: "Leadership", text: "Chess teaches young people to plan, take responsibility for decisions, and learn from setbacks." },
+    { title: "Community", text: "We bring chess into libraries, schools, and community centers so geography and cost are never barriers." },
+    { title: "Inclusion", text: "Every program is built to welcome first-time players alongside experienced competitors, regardless of background." },
+    { title: "Excellence", text: "From camp curriculum to tournament direction, we hold our programs to a high, consistent standard." }
   ]
 };
+

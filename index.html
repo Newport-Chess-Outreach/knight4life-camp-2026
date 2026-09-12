@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Knight4Life Summer Camp 2026 — Newport Chess Outreach</title>
-<meta name="description" content="A full week of chess instruction, puzzles, and friendly tournament play for grades 3–8. July 27–31, 2026 at Newport High School, Bellevue, WA.">
+<title>Newport Chess Outreach — Chess Education, Camps &amp; Tournaments</title>
+<meta name="description" content="Newport Chess Outreach is a nonprofit expanding access to chess education in King County through camps, tournaments, and community outreach.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -14,158 +14,142 @@
 <a class="skip-link" href="#main">Skip to main content</a>
 
 <header class="site-header">
-  <nav class="nav">
+  <nav class="nav" aria-label="Main navigation">
     <a class="brand" href="index.html">
       <span class="logo-mark" aria-hidden="true">
-        <img src="logo.png" alt="Newport Chess Outreach logo" style="width:100%;height:100%;object-fit:cover;border:0;">
+            <img src="logo.png" alt="Newport Chess Outreach logo" class="hero-banner" style="width:100%;height:100%;object-fit:cover;border: 0;">          
       </span>
       Newport Chess Outreach
     </a>
-    <div class="nav-actions">
-      <a class="btn btn-primary btn-sm" href="register.html">Register Now</a>
-    </div>
-    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+    <ul class="nav-links">
+      <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
   </nav>
-  <div class="mobile-menu">
-    <a class="btn btn-primary" href="register.html">Register Now</a>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html" class="active" aria-current="page">Home</a>
+    <a href="about.html">About</a>
   </div>
 </header>
 
 <main id="main">
 
-  <!-- Hero banner -->
-  <section class="page-hero">
-    <div class="container">
-      <span class="badge badge-red" style="margin-bottom:1rem;">Camps</span>
-      <h1 id="ed-title">Knight4Life Summer Camp</h1>
-      <div class="card-meta" style="margin-top:1.25rem;font-size:0.95rem;color:var(--ink-200);">
-        <span id="ed-date"></span>
-        <span id="ed-time"></span>
-        <span id="ed-location"></span>
-        <span id="ed-age"></span>
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-logo-slot">
+          <img src="logo.png" alt="Newport Chess Outreach logo" class="hero-banner" style="width:20%;height:20%;object-fit:cover;border: 0;">
+        </div>
+        <span class="eyebrow on-dark">Bellevue, WA · Washington-Certified Nonprofit</span>
+        <h1>Newport Chess Outreach</h1>
+        <p class="lede">Providing educational opportunities, tournaments, camps, and outreach programs through the game of chess.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-outline" href="about.html">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-banner placeholder on-dark ratio-4-3" style="border: none; background: transparent; box-shadow: none; padding: 0; border-radius: 0;">
+        <img src="hero.JPG" alt="Newport Chess Outreach Banner" class="hero-banner" style="width:100%;height:100%;object-fit:cover;object-position:center;border: 0; border-radius: 0;">
       </div>
     </div>
   </section>
 
-  <div id="event-detail">
-    <section class="section">
-      <div class="container">
-        <div class="grid" style="grid-template-columns:1fr;gap:3rem;max-width:1100px;">
+  <!-- ===== Upcoming Events ===== -->
+  <section class="section bg-paper" aria-labelledby="events-heading">
+    <div class="container">
+      <div class="section-head" style="margin-bottom:0;">
+        <span class="eyebrow">Get On The Board</span>
+        <h2 id="events-heading">Upcoming Events &amp; Camps</h2>
+        <p class="lede">No upcoming events.</p>
+      </div>
+    </div>
+  </section>
 
-          <!-- Description -->
-          <div>
-            <h2>About This Camp</h2>
-            <p id="ed-description" class="lede" style="max-width:none;margin-top:0.7rem;"></p>
-          </div>
-
-          <!-- Camp Flyer download -->
-          <div style="background:var(--paper-50);border:1px solid var(--line);border-radius:var(--radius-md);padding:2rem;">
-            <h3 style="margin-bottom:0.5rem;">Camp Flyer &amp; Full Details</h3>
-            <p style="color:var(--ink-600);margin-bottom:1.25rem;">Download or view the complete camp flyer — includes pricing, full schedule, and everything you need to know before registering.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;">
-              <a class="btn btn-primary" href="ChessCamp_Flyer.docx" download>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Download Flyer (.docx)
-              </a>
-            </div>
-          </div>
-
-          <!-- Schedule -->
-          <div>
-            <h2>Daily Schedule (Outline)</h2>
-            <div class="table-wrap" style="margin-top:1.25rem;">
-              <table class="schedule-table">
-                <thead><tr><th>Time</th><th>Activity</th></tr></thead>
-                <tbody id="ed-schedule"></tbody>
-              </table>
-            </div>
-          </div>
-
-          <!-- Materials + Refund -->
-          <div class="grid grid-2">
-            <div>
-              <h3>What to Bring</h3>
-              <ul id="ed-materials" style="list-style:disc;padding-left:1.2rem;display:flex;flex-direction:column;gap:0.4rem;color:var(--ink-600);margin-top:1rem;"></ul>
-            </div>
-            <div>
-              <h3>Refund Policy</h3>
-              <p id="ed-refund" style="color:var(--ink-600);margin-top:1rem;"></p>
-            </div>
-          </div>
-
-          <!-- FAQs -->
-          <div>
-            <h2>Frequently Asked Questions</h2>
-            <div id="ed-faqs"></div>
-          </div>
-
-          <!-- Register CTA -->
-          <div style="background:var(--paper-50);border:1px solid var(--line);border-radius:var(--radius-md);padding:2rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.25rem;">
-            <div>
-              <p style="font-size:0.85rem;color:var(--ink-400);margin-bottom:0.25rem;">Registration Fee (Final Call Discounts! Ends: July 24th) </p>
-              <p style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--red-700);" id="ed-cost"></p>
-            </div>
-            <a class="btn btn-primary" href="register.html">Register Now</a>
-          </div>
-
+  <!-- ===== Impact — edit the three values directly below ===== -->
+  <section class="section bg-ink" aria-labelledby="impact-heading">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow on-dark">Our Impact</span>
+        <h2 id="impact-heading">Measured one move at a time</h2>
+      </div>
+      <div class="grid grid-3" id="stats-grid">
+        <div class="stat">
+          <!-- IMPACT VALUE 1: Replace [AMOUNT] below with your money raised, including the currency symbol. -->
+          <div class="stat-num" id="impact-money-raised">$8000+</div>
+          <div class="stat-label">Money Raised</div>
+        </div>
+        <div class="stat">
+          <!-- IMPACT VALUE 2: Replace [COUNT] below with the number of school districts your participants have been part of. -->
+          <div class="stat-num" id="impact-school-districts">27</div>
+          <div class="stat-label">School Districts Represented</div>
+          <p class="stat-note">The number of school districts our participants have been part of</p>
+        </div>
+        <div class="stat">
+          <!-- IMPACT VALUE 3: Replace [COUNT] below with your total number of participants. -->
+          <div class="stat-num" id="impact-participants">200+</div>
+          <div class="stat-label">Participants</div>
+          <p class="stat-note">The total number of participants</p>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
+
+  <!-- ===== Donate ===== -->
+  <section class="section bg-paper" id="donate" aria-labelledby="donate-heading">
+    <div class="container">
+      <div class="section-head center">
+        <h2 id="donate-heading">Donate</h2>
+        <p class="lede donate-description">Support our cause by donating through Zelle. Scan the QR code below</p>
+      </div>
+      <!-- ZELLE QR CODE: Replace the placeholder div below with your actual QR image:
+           <img class="zelle-qr" src="zelle-qr.png" alt="Scan to donate to Newport Chess Outreach through Zelle" width="280" height="280">
+           Save your QR image as zelle-qr.png beside index.html, or change src to its actual path.
+      -->
+      <div class="placeholder ratio-1-1 zelle-qr">
+           <img class="zelle-qr" src="zelle.jpg" alt="Scan to donate to Newport Chess Outreach through Zelle" style="width:100%;height:100%;object-fit:contain;border:0;">
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <span style="font-family:var(--font-display);font-weight:600;font-size:1.05rem;color:var(--paper-0);">Newport Chess Outreach</span>
-        <p>Expanding access to chess education through camps, tournaments, and community outreach.</p>
+
+          Newport Chess Outreach
+        <p>Expanding access to chess education through camps, tournaments, and community outreach across King County.</p>
         <div class="social-row">
           <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 9h2V6h-2c-1.7 0-3 1.3-3 3v2H9v3h2v7h3v-7h2.2l.8-3H14V9z"/></svg></a>
           <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.5"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.5M12 17v-4.5c0-1.4 1-2.5 2.5-2.5s2.5 1.1 2.5 2.5V17"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3V9z" fill="currentColor" stroke="none"/></svg></a>
         </div>
       </div>
-      <div>
-        <h4>This Camp</h4>
-        <a href="index.html">Camp Overview</a>
-        <a href="register.html">Register</a>
-        <a href="ChessCamp_Flyer.docx" download>Download Flyer</a>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="index.html" class="active" aria-current="page">Home</a>
+        <a href="about.html">About</a>
       </div>
       <div>
         <h4>Contact</h4>
-        <a href="mailto:newportchessoutreach@gmail.com">newportchessoutreach@gmail.com</a>
-        <a href="tel:+14255984787">(425) 598-4787</a>
-        <span style="display:block;padding:0.35rem 0;font-size:0.9rem;color:var(--ink-200);">Instagram: @newportchessoutreach</span>
+        <a href="mailto:newportchessoutreach@outlook.com">newportchessoutreach@outlook.com<br><span style="font-size:0.72rem;opacity:0.7;"></span></a>
+        <a href="tel:+14015550123">(401) 555-0123<br><span style="font-size:0.72rem;opacity:0.7;"></span></a>
+        <span style="display:block;padding:0.5rem 0;font-size:0.9rem;">Instagram: @newportchessoutreach<br><span style="font-size:0.72rem;opacity:0.7;"></span></span>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© <span id="year"></span> Newport Chess Outreach. All rights reserved.</span>
-      <span>Newport Chess Outreach is a nonprofit organization based in Bellevue, WA.</span>
+      <span>Newport Chess Outreach is a Washington-Certified nonprofit organization.</span>
     </div>
   </div>
 </footer>
 
 <script src="data.js"></script>
 <script src="script.js"></script>
-<script>
-function toggleFlyer(btn) {
-  const viewer = document.getElementById('flyer-viewer');
-  const iframe = document.getElementById('flyer-iframe');
-  if (viewer.style.display === 'none') {
-    viewer.style.display = 'block';
-    // Use Google Docs viewer for in-browser .docx rendering
-    if (!iframe.src || iframe.src === window.location.href) {
-      iframe.src = 'https://docs.google.com/gview?url=' + encodeURIComponent(window.location.origin + '/ChessCamp_Flyer.docx') + '&embedded=true';
-    }
-    btn.textContent = 'Hide Preview';
-    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg> Hide Preview';
-  } else {
-    viewer.style.display = 'none';
-    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Preview Inline';
-  }
-}
-</script>
 </body>
 </html>

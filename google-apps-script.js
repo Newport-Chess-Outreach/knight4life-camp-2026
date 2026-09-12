@@ -1,26 +1,31 @@
+/* Legacy reference only: this backend is not used by the two-page website.
+ * There are no registration or payment forms to connect. See SETUP.md.
+ */
 /**
- * Newport Chess Outreach — Google Sheets backend (Camp Registration Only)
+ * Newport Chess Outreach — Google Sheets backend
  * ----------------------------------------------------------------------------
- * This is NOT a file you upload. Instead:
+ * This is NOT a file you upload anywhere. Instead:
  *
  *   1. Create a new Google Sheet (sheets.new) — name it something like
- *      "Knight4Life Summer Camp 2026 — Registrations"
- *   2. In that Sheet, go to Extensions → Apps Script
- *   3. Delete the placeholder code and paste everything below
- *   4. Click Deploy → New deployment → select type "Web app"
+ *      "Newport Chess Outreach — Registrations & Donations".
+ *   2. In that Sheet, go to Extensions → Apps Script.
+ *   3. Delete the placeholder code and paste in everything below.
+ *   4. Click Deploy → New deployment → type "Web app".
  *        - Execute as: Me
  *        - Who has access: Anyone
- *   5. Click Deploy, authorize when Google asks, copy the Web App URL
- *   6. Paste that URL into SHEETS_WEB_APP_URL in Netlify environment variables
+ *   5. Click Deploy, authorize it when Google asks, then copy the Web App URL.
+ *   6. Paste that URL into the SHEETS_WEB_APP_URL environment variable in
+ *      Netlify (see SETUP.md).
  *
- * A "Registrations" tab is created automatically on the first submission.
+ * Two tabs — "Registrations" and "Donations" — are created automatically
+ * the first time someone registers or donates. You can sort, filter, color-
+ * code, or export these tabs exactly like any other Google Sheet.
  * ----------------------------------------------------------------------------
  */
 
 const REGISTRATION_HEADERS = [
   "timestamp", "registrationId", "eventTitle", "eventSlug",
   "participantFirstName", "participantLastName", "gradeLevel", "school", "experienceLevel",
-  "nwChessRating", "uscfRating",
   "medicalConditions", "allergies", "accommodations",
   "parentFirstName", "parentLastName", "parentEmail", "parentPhone",
   "parentAddress", "parentCity", "parentState", "parentZip",
@@ -28,6 +33,8 @@ const REGISTRATION_HEADERS = [
   "waiverLiability", "waiverPhoto", "waiverMedical", "waiverTerms",
   "amountCents", "paymentStatus", "stripeSessionId"
 ];
+
+const DONATION_HEADERS = ["timestamp", "donorEmail", "amount", "frequency", "stripeSessionId"];
 
 function doPost(e) {
   let data;
@@ -48,11 +55,11 @@ function doPost(e) {
     }
 
     if (data.action === "markPaid") {
-      const sheet     = getOrCreateSheet(ss, "Registrations", REGISTRATION_HEADERS);
-      const idCol     = REGISTRATION_HEADERS.indexOf("registrationId") + 1;
+      const sheet = getOrCreateSheet(ss, "Registrations", REGISTRATION_HEADERS);
+      const idCol = REGISTRATION_HEADERS.indexOf("registrationId") + 1;
       const statusCol = REGISTRATION_HEADERS.indexOf("paymentStatus") + 1;
       const sessionCol = REGISTRATION_HEADERS.indexOf("stripeSessionId") + 1;
-      const values    = sheet.getDataRange().getValues();
+      const values = sheet.getDataRange().getValues();
       for (let i = 1; i < values.length; i++) {
         if (String(values[i][idCol - 1]) === String(data.registrationId)) {
           sheet.getRange(i + 1, statusCol).setValue("Paid");
@@ -60,6 +67,18 @@ function doPost(e) {
           break;
         }
       }
+      return respond({ ok: true });
+    }
+
+    if (data.action === "newDonation") {
+      const sheet = getOrCreateSheet(ss, "Donations", DONATION_HEADERS);
+      sheet.appendRow([
+        new Date(),
+        data.donorEmail || "",
+        data.amount || "",
+        data.recurring ? "Monthly" : "One-time",
+        data.stripeSessionId || ""
+      ]);
       return respond({ ok: true });
     }
 
@@ -81,7 +100,7 @@ function getOrCreateSheet(ss, name, headers) {
 }
 
 function respond(obj) {
-  return ContentService
-    .createTextOutput(JSON.stringify(obj))
-    .setMimeType(ContentService.MimeType.JSON);
+  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(
+    ContentService.MimeType.JSON
+  );
 }
